@@ -41,7 +41,7 @@ require "i18n/callbacks"
 
 wrapped = I18n::Backend::Simple.new
 
-# ...load you translations (normally from YAML files)
+# ...load your translations (normally from YAML files)
 wrapped.store_translations(:en, {foo: "bar"})
 
 I18n.backend = I18n::Backend::Callbacks.new(
