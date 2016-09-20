@@ -2,8 +2,8 @@ require "i18n"
 
 class I18n::Backend::Callbacks < Delegator
   attr_reader :wrapped
-  attr_reader :before
-  attr_reader :after
+  attr_accessor :before
+  attr_accessor :after
 
   def initialize(wrapped, before: nil, after: nil)
     super(wrapped)

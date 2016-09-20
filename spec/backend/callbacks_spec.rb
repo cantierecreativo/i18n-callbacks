@@ -42,7 +42,25 @@ describe I18n::Backend::Callbacks do
 
   context "without hooks defined" do
     it "proxies to the backend" do
-      expect(I18n.t("hello")).to eq(original)
+      expect(I18n.t(key)).to eq(original)
+    end
+  end
+
+  context "setting hooks via attributes" do
+    it "works for the pre hook" do
+      I18n.backend.before = ->(locale, key, options = {}) do
+        [:fr, key, options]
+      end
+
+      I18n.t(key)
+
+      expect(wrapped).to have_received(:translate).with(:fr, key, {})
+    end
+
+    it "works for the post hook" do
+      I18n.backend.after = ->(*args) { "ciao" }
+
+      expect(I18n.t(key)).to eq("ciao")
     end
   end
 end
