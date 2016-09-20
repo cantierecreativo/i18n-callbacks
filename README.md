@@ -52,6 +52,8 @@ I18n.backend = I18n::Backend::Callbacks.new(
 I18n.t(:foo) # => "foo: bar"
 ```
 
+See also the `examples` directory.
+
 ## Development
 
 Run `rake spec` to run the tests.
